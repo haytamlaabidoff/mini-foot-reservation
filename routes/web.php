@@ -174,6 +174,7 @@ Route::get('/departments/{id}/posts', function ($id) {
     )->get();
 
 });
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN ONLY ROUTES
