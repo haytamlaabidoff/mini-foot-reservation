@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('terrains', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name');
+            $table->decimal('price_per_hour', 8, 2);
+            $table->boolean('status')->default(true);
+
+            $table->enum('terrain_condition', ['praticable', 'impraticable'])
+                  ->default('praticable');
+    $table->string('type')->nullable();
+        $table->integer('number_of_days')->default(1);
+            $table->timestamps(); // ✅ فقط هادي تكفي
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('terrains');
+    }
+};
